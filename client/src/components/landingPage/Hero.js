@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image"; // Optimized loading
 import background from "../../../public/images/background_badrinath.jpeg";
+import { FaCalendarAlt, FaUser } from "react-icons/fa";
 
 const Hero = () => {
   return (
@@ -28,19 +29,30 @@ const Hero = () => {
         </p>
 
         {/* Booking Inputs */}
-        <div className="bg-white bg-opacity-20 backdrop-blur-md rounded-xl p-4 sm:p-6 flex flex-col sm:flex-row gap-5 items-center shadow-lg">
-          <input
-            type="date"
-            className="w-full text-secondary sm:w-auto border px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-hoveraccent"
-          />
-          <input
-            type="number"
-            min="1"
-            placeholder="Guests"
-            className="w-full sm:w-auto border text-secondary placeholder:text-secondary px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-hoveraccent"
-          />
-          <button className="bg-secondary text-white px-10 py-3 rounded-lg hover:bg-hoveraccent transition w-full sm:w-auto">
-            Book Now
+        <div className="bg-white bg-opacity-20 backdrop-blur-md rounded-xl p-4 sm:p-6 flex flex-col sm:flex-row gap-5 items-center shadow-lg w-full">
+          {/* Date Input with Icon */}
+          <div className="relative w-full sm:w-auto">
+            <FaCalendarAlt className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500" />
+            <input
+              type="date"
+              className="w-full sm:w-auto border text-gray-500 placeholder-gray-500 px-10 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-hoveraccent appearance-none min-w-[160px]"
+            />
+          </div>
+
+          {/* Guests Input with Icon */}
+          <div className="relative w-full sm:w-auto">
+            <FaUser className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500" />
+            <input
+              type="number"
+              min="1"
+              placeholder="Guests"
+              className="w-full sm:w-auto border text-secondary placeholder-gray-500 px-10 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-hoveraccent appearance-none min-w-[120px]"
+            />
+          </div>
+
+          {/* Book Now Button */}
+          <button className="bg-secondary text-white font-sm px-4 py-3 rounded-lg hover:bg-hoveraccent transition w-full sm:w-auto">
+            Book
           </button>
         </div>
       </div>
