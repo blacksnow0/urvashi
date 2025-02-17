@@ -1,9 +1,14 @@
-import React from "react";
-import Image from "next/image"; // Optimized loading
+"use client";
+
+import React, { useState } from "react";
+import Image from "next/image";
 import background from "../../../public/images/background_badrinath.jpeg";
 import { FaCalendarAlt, FaUser } from "react-icons/fa";
 
 const Hero = () => {
+  const [checkIn, setCheckIn] = useState("");
+  const [checkOut, setCheckOut] = useState("");
+
   return (
     <section className="relative h-[80vh] md:min-h-screen flex items-center justify-center text-center">
       {/* Background Image with Overlay */}
@@ -30,16 +35,43 @@ const Hero = () => {
 
         {/* Booking Inputs */}
         <div className="bg-white bg-opacity-20 backdrop-blur-md rounded-xl p-4 sm:p-6 flex flex-col sm:flex-row gap-5 items-center shadow-lg w-full">
-          {/* Date Input with Icon */}
+          {/* Check-in Input */}
           <div className="relative w-full sm:w-auto">
             <FaCalendarAlt className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500" />
             <input
               type="date"
-              className="w-full sm:w-auto border text-gray-500 placeholder-gray-500 px-10 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-hoveraccent appearance-none min-w-[160px]"
+              value={checkIn}
+              onChange={(e) => setCheckIn(e.target.value)}
+              className="w-full sm:w-auto border text-gray-500 px-10 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-hoveraccent appearance-none min-w-[160px]"
             />
+            <label
+              className={`absolute left-10 top-1/2 transform -translate-y-1/2 text-gray-500 transition-all ${
+                checkIn ? "text-xs top-2" : "text-base"
+              }`}
+            >
+              Check-in
+            </label>
           </div>
 
-          {/* Guests Input with Icon */}
+          {/* Check-out Input */}
+          <div className="relative w-full sm:w-auto">
+            <FaCalendarAlt className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500" />
+            <input
+              type="date"
+              value={checkOut}
+              onChange={(e) => setCheckOut(e.target.value)}
+              className="w-full sm:w-auto border text-gray-500 px-10 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-hoveraccent appearance-none min-w-[160px]"
+            />
+            <label
+              className={`absolute left-10 top-1/2 transform -translate-y-1/2 text-gray-500 transition-all ${
+                checkOut ? "text-xs top-2" : "text-base"
+              }`}
+            >
+              Check-out
+            </label>
+          </div>
+
+          {/* Guests Input */}
           <div className="relative w-full sm:w-auto">
             <FaUser className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500" />
             <input
@@ -51,8 +83,8 @@ const Hero = () => {
           </div>
 
           {/* Book Now Button */}
-          <button className="bg-secondary text-white font-sm px-4 py-3 rounded-lg hover:bg-hoveraccent transition w-full sm:w-auto">
-            Book
+          <button className="bg-secondary text-white px-10 py-3 rounded-lg hover:bg-hoveraccent transition w-full sm:w-auto">
+            Book Now
           </button>
         </div>
       </div>
